@@ -1,0 +1,3934 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kin do Dia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg max-w-lg mx-auto p-6">
+      <div id="result" class="text-center"></div>
+    </div>
+    <script>
+      const kins = {
+        1: {
+          nome: " Magnético Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c8e59565ab5d488e91e5aa691a5eab53~mv2.png",
+          poema: `Unifico com o fim de Nutrir
+                Atraindo o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        2: {
+          nome: "Vento Lunar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e9d443f2ca164a14b1f97a1f820f52c4~mv2.png",
+          poema: `Polarizo com o fim de Comunicar
+                Estabilizando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        3: {
+          nome: "Noite Elétrica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0750bf825f5f42d4a7e32d6a86000a75~mv2.png",
+          poema: `Ativo com o fim de Sonhar
+                Vinculando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Realização`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        4: {
+          nome: "Semente Autoexistente Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_ad7a99a93aa14ebca1dd51a84b1d9c42~mv2.png",
+          poema: `Defino com o fim de Focalizar
+                Medindo a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder do Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        5: {
+          nome: "Serpente Harmônica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e4a76697f7b64d859a6f0f0e6860acdb~mv2.png",
+          poema: `Potencializo com o fim de Sobreviver
+                Comandando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder do Espaço`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        6: {
+          nome: "Enlaçador de Mundos Rítmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_1c220ab888954de2ba2d843fd274eb94~mv2.png",
+          poema: `Organizo com o fim de Igualar
+                Equilibrando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        7: {
+          nome: "Mão Ressonante Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d8635b8306964d818e80cc434ade8b13~mv2.png",
+          poema: `Canalizo com o fim de Conhecer
+                Inspirando a Cura
+                Selo o Armazém da Realização
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Autogeração`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        8: {
+          nome: "Estrela Galáctica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_4015cc1a12aa498aa4aab62c266dddeb~mv2.png",
+          poema: `Harmonizo com o fim de Embelezar
+                Modelando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder do Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        9: {
+          nome: "Lua Solar Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_01bcd839fd30440491b8bd5940ff5eac~mv2.png",
+          poema: `Pulso com o fim de Purificar
+                Realizando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder do Espaço`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        10: {
+          nome: "Cahorro Planetário Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7bfbe2fdcb454e87b43596c6ba05d48d~mv2.png",
+          poema: `Aperfeiçoo com o fim de Amar
+                Produzindo a Lealdade
+                Selo o Processo do Coração
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder do Infinito   
+                Sou um kin polar
+                Estendo o espectro galáctico Branco`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        11: {
+          nome: "Macaco Espectral Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6908f1efb2da449ea919c0f8464a854f~mv2.png",
+          poema: `Dissolvo com o fim de Brincar
+                Libertando a Ilusão
+                Selo o Processo da Magia
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        12: {
+          nome: "Humano Cristal Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0a36e76fabfe40df8d322a5c7f89de0e~mv2.png",
+          poema: `Dedico-me com o fim de Influenciar
+                Universalizando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder do Florescimento`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        13: {
+          nome: "Caminhante do Céu Cósmico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0273aab5a74b4758bb2f1979d5c6a5bb~mv2.png",
+          poema: `Persevero com o fim de Explorar
+                Transcendendo a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Navegação`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        14: {
+          nome: " Magnético Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_4f5edc42311c472aaf6550af6ab7d303~mv2.png",
+          poema: `Unifico com o fim de Encantar
+                Atraindo a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/14--branco",
+        },
+        15: {
+          nome: "Águia Lunar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_f56381044d604696ba0009c192e0337c~mv2.png",
+          poema: `Polarizo com o fim de Criar
+                Estabilizando a Mente
+                Selo a Saída da Visão
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Realização`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        16: {
+          nome: "Guerreiro Elétrico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3ec38e82d2fd43f3bb0a9eeb646bc167~mv2.png",
+          poema: `Ativo com o fim de Questionar
+                Vinculando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        17: {
+          nome: "Terra Autoexistente Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_1a259c99339a495dad544384926618e2~mv2.png",
+          poema: `Defino com o fim de Evoluir
+                Medindo a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da  Espaço`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        18: {
+          nome: "Espelho Harmônico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_161f7e92b912447d9e1a38c0d73dc27b~mv2.png",
+          poema: `Potencializo com o fim de Refletir
+                Comandando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Morte`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        19: {
+          nome: "Tormenta Rítmica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_642998792c984a4e989cbfea7c5eeba4~mv2.png",
+          poema: `Organizo com o fim de Catalisar
+                Equilibrando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        20: {
+          nome: "Sol Ressonante Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_566aa4cde16f4d099ab4469816a1e3f4~mv2.png",
+          poema: `Canalizo com o fim de Iluminar
+                Inspirando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder Livre-Arbítrio
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        21: {
+          nome: "Dragão Galáctico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7df595d4d4fd4b72a8925c4453cbcd7a~mv2.png",
+          poema: `Harmonizo com o fim de Nutrir
+                Modelando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Força-Vital`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        22: {
+          nome: "Vento Solar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_aaba3b3261f44742a68328111d861ab6~mv2.png",
+          poema: `Pulso com o fim de Comunicar
+                Realizando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder  do Infinito
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        23: {
+          nome: "Noite Planetária Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_eab290711c144cf0a7477eae98d159d4~mv2.png",
+          poema: `Aperfeiçoo com o fim de Sonhar
+                Produzindo a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        24: {
+          nome: "Semente Espectral Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3ea55feaaaa4498ab3149786d2fc7c5f~mv2.png",
+          poema: `Dissolvo com o fim de Focalizar
+                Libertando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        25: {
+          nome: "Serpente Cristal Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_643bc06564f946aba67cd2838c28b8d6~mv2.png",
+          poema: `Dedico-me com o fim de Sobreviver
+                Universalizando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Navegação`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        26: {
+          nome: "Enlaçador de Mundos Cósmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_077dc06b600a42f0b11694e1f32a98fe~mv2.png",
+          poema: `Persevero com o fim de Igualar
+                Transcendendo a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        27: {
+          nome: "Mão Magnética Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c4892fce35314e359ab24d93e4ae58c1~mv2.png",
+          poema: `Unifico com o fim de Conhecer
+                Atraindo a Cura
+                Selo o Armazém da Realização
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        28: {
+          nome: "Estrela Lunar Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_fa1dc0ad59e5476c8588e6108d5bdb0d~mv2.png",
+          poema: `Polarizo com o fim de Embelezar
+                Estabilizando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder do Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        29: {
+          nome: "Lua Elétrica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6f6ac1faeaf34a1eafd715d12fbf6a9c~mv2.png",
+          poema: `Ativo com o fim de Purificar
+                Vinculando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder do Espaço`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        30: {
+          nome: "Cachorro Autoexistente Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0f03c455f2654d24a2e9949a1f816ec2~mv2.png",
+          poema: `Defino com o fim de Amar
+                Medindo a Lealdade
+                Selo o Processo do Coração
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Morte 
+                Sou um kin polar
+                Converto o espectro galáctico Branco`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        31: {
+          nome: "Macaco Harmônico Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_cf355580de8941da80c3ee2e919398b3~mv2.png",
+          poema: `Potencializo com o fim de Brincar
+                Comandando a Ilusão
+                Selo o Processo da Magia
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Autogeração`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        32: {
+          nome: "Humano Rítmico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_5db8d94998ea42e49e80f8b059d474b3~mv2.png",
+          poema: `Organizo com o fim de Influenciar
+                Equilibrando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        33: {
+          nome: "Caminhante do Céu Ressonante Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_68023a1f43e64851965f92303951beeb~mv2.png",
+          poema: `Canalizo com o fim de Explorar
+                Inspirando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Força-Vital`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        34: {
+          nome: "Mago Galáctico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_71c9a61cc49a42c9ad4f4c9493459add~mv2.png",
+          poema: `Harmonizo com o fim de Encantar
+                Modelando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder do Infinito`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        35: {
+          nome: "Águia Solar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_82a4d08dcd27465dba3d3b18d7156cc3~mv2.png",
+          poema: `Pulso com o fim de Criar
+                Realizando a Mente
+                Selo a Saída da Visão
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        36: {
+          nome: "Guerreiro Planetário Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_117a48cd1e0f48f38366347ca9ce42b9~mv2.png",
+          poema: `Aperfeiçoo com o fim de Questionar
+                Produzindo a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder do Florescimento`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        37: {
+          nome: "Terra Espectral Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_8581756f00e24e7787dab89382ff56d2~mv2.png",
+          poema: `Dissolvo com o fim de Evoluir
+                Libertando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        38: {
+          nome: "Espelho Cristal Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_852bb7370ce9472aa70908118f4bdd41~mv2.png",
+          poema: `Dedico-me com o fim de Refletir
+                Universalizando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        39: {
+          nome: "Tormenta Cósmica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_82f0472975694f4a83865d321548c074~mv2.png",
+          poema: `Persevero com o fim de Catalisar
+                Transcendendo a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder Abundância
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        40: {
+          nome: "Sol Magnético Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_8d9d3409644c4c46b465234c7edfbd7f~mv2.png",
+          poema: `Unifico com o fim de Iluminar
+                Atraindo a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        41: {
+          nome: "Dragão Lunar Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_863e0b6556224873be0dbc6be6f03cde~mv2.png",
+          poema: `Polarizo com o fim de Nutrir
+                Estabilizando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder do Espaço`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        42: {
+          nome: "Vento Elétrico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_52eeb8dc84594d30bb2fd6430a368c62~mv2.png",
+          poema: `Ativo com o fim de Comunicar
+                Vinculando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Morte`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        43: {
+          nome: "Noite Autoexistente Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_80bf8a34e935449987d6ee42e055382f~mv2.png",
+          poema: `Defino com o fim de Sonhar
+                Medindo a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Autogeração
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        44: {
+          nome: "Semente Harmônica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3a37954fe4644de68e358d7f39a272fc~mv2.png",
+          poema: `Potencializo com o fim de Focalizar
+                Comandando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder do Livre-Arbítrio`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        45: {
+          nome: "Serpente Rítmica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d0a05c81932a42f2ad4cec6d7c34e21f~mv2.png",
+          poema: `Organizo com o fim de Sobreviver
+                Equilibrando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        46: {
+          nome: "Enlaçador de Mundos Ressonante Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_ddef259637d849dcb72ad20f13ccdd92~mv2.png",
+          poema: `Canalizo com o fim de Igualar
+                Inspirando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder do Infinito`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        47: {
+          nome: "Mão Galáctica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a90bf28d176640b59d985ad928393dac~mv2.png",
+          poema: `Harmonizo com o fim de Conhecer
+                Modelando a Cura
+                Selo o Armazém da Realização
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        48: {
+          nome: "Estrela Solar Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a29758b81dd2483081ed8ffd85164b59~mv2.png",
+          poema: `Pulso com o fim de Embelezar
+                Realizando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder do Florescimento`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        49: {
+          nome: "Lua Planetária Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c85f8462cadd4688bde2da10dc81280e~mv2.png",
+          poema: `Aperfeiçoo com o fim de Purificar
+                Produzindo o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Navegação`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        50: {
+          nome: "Cahorro Espectral Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_9566ba24e3d14d60b097c05bf9014451~mv2.png",
+          poema: `Dissolvo com o fim de Amar
+                Libertando a Lealdade
+                Selo o Processo do Coração
+                Com o tom  da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um portal de ativação galáctica entra por mim
+                Sou um kin polar
+                Transporto o espectro galáctico Branco`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        51: {
+          nome: "Macaco Cristal Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_db4ac98b6dbd4fed9b12d3ccd508f0f3~mv2.png",
+          poema: `Dedico-me com o fim de Brincar
+                Universalizando a Ilusão
+                Selo o Processo da Magia
+                Com o tom  da Cooperação
+                Eu sou guiado pelo poder da Abundância
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        52: {
+          nome: "Humano Cósmico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d818a30fb7974e9d955c482d4c48f4fe~mv2.png",
+          poema: `Persevero com o fim de Influenciar
+                Transcendendo a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Inteligência`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        53: {
+          nome: "Caminhante do Céu Magnético Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_14fa62cf1a1648c2a0f0bb6211e271a4~mv2.png",
+          poema: `Unifico com o fim de Explorar
+                Atraindo a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        54: {
+          nome: "Mago Lunar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_bd79fbbc968744dfb796eb356815a8b4~mv2.png",
+          poema: `Polarizo com o fim de Encantar
+                Estabilizando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Morte`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        55: {
+          nome: "Águia Elétrica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_210556fbfdb34b449d926f6dd4257969~mv2.png",
+          poema: `Ativo com o fim de Criar
+                Vinculando a Mente
+                Selo a Saída da Visão
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Autogeração
+                Sou um kin polar
+                Estabeleço o espectro galáctico Azul`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        56: {
+          nome: "Guerreiro Autoexistente Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_52820d05dddc4bd6a6ec411082a99fec~mv2.png",
+          poema: `Defino com o fim de Questionar
+                Medindo a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder do Livre-Arbítrio`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        57: {
+          nome: "Terra Harmônica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0798f9fcba604595b7c16274d99eb493~mv2.png",
+          poema: `Potencializo com o fim de Evoluir
+                Comandando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Força-Vital`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        58: {
+          nome: "Espelho Rítmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_549c2094368243cda756d12a53ac4d14~mv2.png",
+          poema: `Organizo com o fim de Refletir
+                Equilibrando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        59: {
+          nome: "Tormenta Ressonante Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_b43c72932e8043eb9a796bac6e179a0f~mv2.png",
+          poema: `Canalizo com o fim de Catalisar
+                Inspirando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        60: {
+          nome: "Sol Galáctico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c381c6e57f3343ca9e6b8da4f8f86fa7~mv2.png",
+          poema: `Harmonizo com o fim de Iluminar
+                Modelando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder do Florescimento`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        61: {
+          nome: "Dragão Solar Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_9337975536d34713a088c637a641dd0e~mv2.png",
+          poema: `Pulso com o fim de Nutrir
+                Realizando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Navegação`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        62: {
+          nome: "Vento Planetário Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_763b61c27f85434da93a3719f18d0a35~mv2.png",
+          poema: `Aperfeiçoo com o fim de Comunicar
+                Produzindo o Alento
+                Selo a Entrada do Espírito
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        63: {
+          nome: "Noite Espectral Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_65d8278438e44dcd81cf599aa9b64bac~mv2.png",
+          poema: `Dissolvo com o fim de Sonhar
+                Libertando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        64: {
+          nome: "Semente Cristal Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_29c71799457e44a99cc968ddf065f572~mv2.png",
+          poema: `Dedico-me com o fim de Focalizar
+                Universalizando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Inteligência
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        65: {
+          nome: "Serpente Cósmica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_f902662d95be4851b6e5c34a7c782ba9~mv2.png",
+          poema: `Persevero com o fim de Sobreviver
+                Transcendendo o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Água Universa`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        66: {
+          nome: "Enlaçador de Mundos Magnético Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_ef89605d89aa468ea213ce64748baa13~mv2.png",
+          poema: `Unifico com o fim de Igualar
+                Atraindo a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        67: {
+          nome: "Mão Lunar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_74353556c0194791ba6ad0b8c2ea492a~mv2.png",
+          poema: `Polarizo com o fim de Conhecer
+                Estabilizando a Cura
+                Selo o Armazém da Realização
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Autogeração`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        68: {
+          nome: "Estrela Elétrica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_9aaf30a823a047d4b7d85c192e26b1b9~mv2.png",
+          poema: `Ativo com o fim de Embelezar
+                Vinculando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder do Livre-Arbítrio`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        69: {
+          nome: "Lua Autoexistente Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c36e377d2b7c4c26916c4031ecfb8e7b~mv2.png",
+          poema: `Defino com o fim de Purificar
+                Medindo o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Força-Vital
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        70: {
+          nome: "Cahorro Harmônico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_b7e99b8cd4d247dbbfb38224d95a98f6~mv2.png",
+          poema: `Potencializo com o fim de Amar
+                Comandando a Lealdade
+                Selo o Processo do Coração
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder do Infinito`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        71: {
+          nome: "Macaco Rítmico Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_73cbdb12d3eb43b78d8401febb9daac2~mv2.png",
+          poema: `Organizo com o fim de Brincar
+                Equilibrando a Ilusão
+                Selo o Processo da Magia
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        72: {
+          nome: "Humano Ressonante Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a343d7c08c224e9ebeb2b527841a7e67~mv2.png",
+          poema: `Canalizo com o fim de Influenciar
+                Inspirando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder do Florescimento
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        73: {
+          nome: "Caminhante do Céu Galáctico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a516206f4c07456aa5c04261ef710ce5~mv2.png",
+          poema: `Harmonizo com o fim de Explorar
+                Modelando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Navegação`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        74: {
+          nome: "Mago Solar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_dcc27533f9334a5c949057a401c52fd8~mv2.png",
+          poema: `Pulso com o fim de Encantar
+                Realizando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        75: {
+          nome: "Águia Planetária Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_03675a941db14921ab1be17b4bda5acb~mv2.png",
+          poema: `Aperfeiçoo com o fim de Criar
+                Produzindo a Mente
+                Selo a Saída da Visão
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Abundância
+                Sou um kin polar
+                Estendo o espectro galáctico Azul`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        76: {
+          nome: "Guerreiro Espectral Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c38b8a050cab499fbc0bdf6ba51cafd5~mv2.png",
+          poema: `Dissolvo com o fim de Questionar
+                Libertando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        77: {
+          nome: "Terra Cristal Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3fca0968964a400a9dc9b648fc4a85bb~mv2.png",
+          poema: `Dedico-me com o fim de Evoluir
+                Universalizando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Água Universal
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        78: {
+          nome: "Espelho Cósmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a07e24977e57430c8034b51475ed2f8f~mv2.png",
+          poema: `Persevero com o fim de Refletir
+                Transcendendo a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do Espírito`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        79: {
+          nome: "Tormenta Magnética Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e89994b646854dd28cf63ecf3cb47ebb~mv2.png",
+          poema: `Unifico com o fim de Catalisar
+                Atraindo a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+        },
+        80: {
+          nome: "Sol Lunar Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7db064bf1154470e8c8f18cda7e57468~mv2.png",
+          poema: `Polarizo com o fim de Iluminar
+                Estabilizando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder do Livre-Arbítrio`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        81: {
+          nome: "Dragão Elétrico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_78a76029505f498881e3f175826e5273~mv2.png",
+          poema: `Ativo com o fim de Nutrir
+                Vinculando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Força-Vital`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        82: {
+          nome: "Vento Autoexistente Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_dab285b6e3514962b789aeec3d85f92b~mv2.png",
+          poema: `Defino com o fim de Comunicar
+                Medindo o Alento
+                Selo a Entrada do Espírito
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder do Infinito`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        83: {
+          nome: "Noite Harmônica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6bd62d83d31b425bae526c2717a2e030~mv2.png",
+          poema: `Potencializo com o fim de Sonhar
+                Comandando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        84: {
+          nome: "Semente Rítmica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_cfc2c7c1e3c9470db644f53e9ae110e0~mv2.png",
+          poema: `Organizo com o fim de Focalizar
+                Equilibrando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        85: {
+          nome: "Serpente Ressonante Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_1980aacf5277482ca7c0acb76f22adb7~mv2.png",
+          poema: `Canalizo com o fim de Sobreviver
+                Inspirando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Navegação
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        86: {
+          nome: "Enlaçador de Mundos Galáctico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_b4cb474dad7247ef87b3dff0c9ae1986~mv2.png",
+          poema: `Harmonizo com o fim de Igualar
+                Modelando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        87: {
+          nome: "Mão Solar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_794617d175044e6d80cddf1902909e84~mv2.png",
+          poema: `Pulso com o fim de Conhecer
+                Realizando a Cura
+                Selo o Armazém da Realização
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Abundância`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        88: {
+          nome: "Estrela Planetária Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a2b2430d147045d1bfe62a37bb2bb341~mv2.png",
+          poema: `Aperfeiçoo com o fim de Embelezar
+                Produzindo a Arte
+                Selo o Armazém da Elegância
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Inteligência
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        89: {
+          nome: "Lua Espectral Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a84dde0ae84f4370b8c12f8923e483f7~mv2.png",
+          poema: `Dissolvo com o fim de Purificar
+                Libertando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        90: {
+          nome: "Cahorro Cristal Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_10c2e04db9bc4377a5f8ea015bcdaadd~mv2.png",
+          poema: `Dedico-me com o fim de Amar
+                Universalizando a Lealdade
+                Selo o Processo do Coração
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder do Espírito`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        91: {
+          nome: "Macaco Cósmico Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e526c3f2a5cb4bea8a6daaa3106e5926~mv2.png",
+          poema: `Persevero com o fim de Brincar
+                Transcendendo a Ilusão
+                Selo o Processo da Magia
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Visão`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        92: {
+          nome: "Humano Magnético Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_26b79eb6087549e4a5cc1e5f392c81c8~mv2.png",
+          poema: `Unifico com o fim de Influenciar
+                Atraindo a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        93: {
+          nome: "Caminhante do Céu Lunar Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c2e503894ff742489df35ac939b97843~mv2.png",
+          poema: `Polarizo com o fim de Explorar
+                Estabilizando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Força-Vital
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        94: {
+          nome: "Mago Elétrico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_67f0657bfaa24a33b8a862cca314c324~mv2.png",
+          poema: `Ativo com o fim de Encantar
+                Vinculando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder do Infinito`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        95: {
+          nome: "Águia Autoexistente Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_68cf77a078594871b221259f09bdeb02~mv2.png",
+          poema: `Defino com o fim de Criar
+                Medindo a Mente
+                Selo a Saída da Visão
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Magia
+                Sou um kin polar
+                Converto o espectro galáctico Azul`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        96: {
+          nome: "Guerreiro Harmônico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_89eba4328ae4443481f5b876773f10b4~mv2.png",
+          poema: `Potencializo com o fim de Questionar
+                Comandando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder do Florescimento
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        97: {
+          nome: "Terra Rítmica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a30c78669c4048ad856bc8725bab4630~mv2.png",
+          poema: `Organizo com o fim de Evoluir
+                Equilibrando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        98: {
+          nome: "Espelho Ressonante Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_4e1846af90bf4b008d26ff98159456c9~mv2.png",
+          poema: `Canalizo com o fim de Refletir
+                Inspirando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        99: {
+          nome: "Tormenta Galáctica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_b059a77595d941428baed668a2c66ef6~mv2.png",
+          poema: `Harmonizo com o fim de Catalisar
+                Modelando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Abundância`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        100: {
+          nome: "Sol Solar Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_1a1c666505e24facaf0231631f85f12b~mv2.png",
+          poema: `Pulso com o fim de Iluminar
+                Realizando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Inteligência`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        101: {
+          nome: "Dragão Planetário Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0aecd7cb61bf442092af875d0968f9b8~mv2.png",
+          poema: `Aperfeiçoo com o fim de Nutrir
+                Produzindo o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Água Universal`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        102: {
+          nome: "Vento Espectral Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e4d0787795844703923d89c5f9f5e7a4~mv2.png",
+          poema: `Dissolvo com o fim de Comunicar
+                Libertando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        103: {
+          nome: "Noite Cristal Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_580ae27873fe4cc880076240208c8ffc~mv2.png",
+          poema: `Dedico-me com o fim de Sonhar
+                Universalizando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Visão`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        104: {
+          nome: "Semente Cósmica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a08e4e276e7d4b2f8caf5b8026e576fa~mv2.png",
+          poema: `Persevero com o fim de Focalizar
+                Transcendendo a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do da Elegância`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        105: {
+          nome: "Serpente Magnética Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_b64ba4132d7941dc89f5bae86b60d922~mv2.png",
+          poema: `Unifico com o fim de Sobreviver
+                Atraindo o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        106: {
+          nome: "Enlaçador de Mundos Lunar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_39efbcb0c4ab410985c1e6c692332b71~mv2.png",
+          poema: `Polarizo com o fim de Igualar
+                Estabilizando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder do Infinito
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        107: {
+          nome: "Mão Elétrica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_340cbe711b25439ca0d7acb6040f8a80~mv2.png",
+          poema: `Ativo com o fim de Conhecer
+                Vinculando a Cura
+                Selo o Armazém da Realização
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Magia
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        108: {
+          nome: "Estrela Autoexistente Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a77db0b2406342e3929fcc21d80944d3~mv2.png",
+          poema: `Defino com o fim de Embelezar
+                Medindo a Arte
+                Selo o Armazém da Elegância
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder do Florescimento
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        109: {
+          nome: "Lua Harmônica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0756cdbb9b464935a0a47073201c6bd3~mv2.png",
+          poema: `Potencializo com o fim de Purificar
+                Comandando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Navegação
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        110: {
+          nome: "Cahorro Rítmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0d9609f927db406ab6c416b687aa7043~mv2.png",
+          poema: `Organizo com o fim de Amar
+                Equilibrando a Lealdade
+                Selo o Processo do Coração
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        111: {
+          nome: "Macaco Ressonante Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c9371c444fc3413a9ae6c157ea363cc2~mv2.png",
+          poema: `Canalizo com o fim de Brincar
+                Inspirando a Ilusão
+                Selo o Processo da Magia
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Abundância
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        112: {
+          nome: "Humano Galáctico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_78af46c554224ce08254c2fca95e75b1~mv2.png",
+          poema: `Harmonizo com o fim de Influenciar
+                Modelando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Inteligência
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        113: {
+          nome: "Caminhante do Céu Solar Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0a0b82b617704ce2be2f676b34484ec8~mv2.png",
+          poema: `Pulso com o fim de Explorar
+                Realizando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Água Universal
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        114: {
+          nome: "Mago Planetário Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_59d34258c43f47148a40097890e9d68f~mv2.png",
+          poema: `Aperfeiçoo com o fim de Encantar
+                Produzindo a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder do Espírito
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        115: {
+          nome: "Águia Espectral Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_b805c389b725410491c428eab10ffb94~mv2.png",
+          poema: `Dissolvo com o fim de Criar
+                Libertando a Mente
+                Selo a Saída da Visão
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um portal de ativação galáctica entra por mim
+                Sou um kin polar
+                Transporto o espectro galáctico Azul`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        116: {
+          nome: "Guerreiro Cristal Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7304bb973d5b4b958d262a4ad3b30505~mv2.png",
+          poema: `Dedico-me com o fim de Questionar
+                Universalizando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Elegância`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        117: {
+          nome: "Terra Cósmica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d8a11d5584e94539aa4f6bd279030059~mv2.png",
+          poema: `Persevero com o fim de Evoluir
+                Transcendendo a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do Nascimento`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        118: {
+          nome: "Espelho Magnético Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c55bced1ce7a4be986617b7a41af55d7~mv2.png",
+          poema: `Unifico com o fim de Refletir
+                Atraindo a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        119: {
+          nome: "Tormenta Lunar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_836e2cde0191495f8955bceaa5eeaede~mv2.png",
+          poema: `Polarizo com o fim de Catalisar
+                Estabilizando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        120: {
+          nome: "Sol Elétrico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_4fb52deceed1409e8ed09533d288abbe~mv2.png",
+          poema: `Ativo com o fim de Iluminar
+                Vinculando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder do Florescimento
+                Sou um kin polar
+                Estabeleço o espectro galáctico Amarelo`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        121: {
+          nome: "Dragão Autoexistente Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_fb33aba2798d444c96e214aa924b78da~mv2.png",
+          poema: `Defino com o fim de Nutrir
+                Medindo o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Navegação`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        122: {
+          nome: "Vento Harmônico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_9b0a5fecef674f80acd0702ffb6aeb15~mv2.png",
+          poema: `Potencializo com o fim de Comunicar
+                Comandando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        123: {
+          nome: "Noite Rítmica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_2713987d28f84fa7b4eb37d39b1b2f52~mv2.png",
+          poema: `Organizo com o fim de Sonhar
+                Equilibrando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        124: {
+          nome: "Semente Ressonante Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_46e5f0d64581449c9ad5c0a7e015ab73~mv2.png",
+          poema: `Canalizo com o fim de Focalizar
+                Inspirando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Inteligência`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        125: {
+          nome: "Serpente Galáctica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_1f56af23104f443eaed896c3d1df18b7~mv2.png",
+          poema: `Harmonizo com o fim de Sobreviver
+                Modelando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Água Universal`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        126: {
+          nome: "Enlaçador de Mundos Solar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_1e77acde886c418a89e1d54fe7ca212d~mv2.png",
+          poema: `Pulso com o fim de Igualar
+                Realizando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder do Espírito`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        127: {
+          nome: "Mão Planetária Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_bff6cd1fadb94170b778a0ebd9f53ccb~mv2.png",
+          poema: `Aperfeiçoo com o fim de Conhecer
+                Produzindo a Cura
+                Selo o Armazém da Realização
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Visão`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        128: {
+          nome: "Estrela Espectral Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_0bffa625cf5647efa06db99fa6633360~mv2.png",
+          poema: `Dissolvo com o fim de Embelezar
+                Libertando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        129: {
+          nome: "Lua Cristal Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_46c772aaba6947619f092e48170d4e99~mv2.png",
+          poema: `Dedico-me com o fim de Purificar
+                Universalizando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder do Nascimento`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        130: {
+          nome: "Cahorro Cósmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_dacc0d82e88041b28383c6675204e2c5~mv2.png",
+          poema: `Persevero com o fim de Amar
+                Transcendendo a Lealdade
+                Selo o Processo do Coração
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        131: {
+          nome: "Macaco Magnético Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_f95759283af743119f77bfab4b8f4233~mv2.png",
+          poema: `Unifico com o fim de Brincar
+                Atraindo a Ilusão
+                Selo o Processo da Magia
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        132: {
+          nome: "Humano Lunar Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6f01f62c65bb43929563cd8daf44ddf9~mv2.png",
+          poema: `Polarizo com o fim de Influenciar
+                Estabilizando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder do Florescimento`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        133: {
+          nome: "Caminhante do Céu Elétrico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_fcb122284ad247dda322fa23982c899c~mv2.png",
+          poema: `Ativo com o fim de Explorar
+                Vinculando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Navegação`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        134: {
+          nome: "Mago Autoexistente Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_9b4bdd371ef74b0eb4a88c4f1d8039ba~mv2.png",
+          poema: `Defino com o fim de Encantar
+                Medindo a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        135: {
+          nome: "Águia Harmônica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_4ae9c442657d4257b3423a395bbc8f95~mv2.png",
+          poema: `Potencializo com o fim de Criar
+                Comandando a Mente
+                Selo a Saída da Visão
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Abundância`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        136: {
+          nome: "Guerreiro Rítmico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_2c5c019216d64ca793c8209804170052~mv2.png",
+          poema: `Organizo com o fim de Questionar
+                Equilibrando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        137: {
+          nome: "Terra Ressonante Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_10710b4a6f27476a9038dab125aaa2eb~mv2.png",
+          poema: `Canalizo com o fim de Evoluir
+                Inspirando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Água Universal`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        138: {
+          nome: "Espelho Galáctico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_367fbefb6e134fd899988fead372743d~mv2.png",
+          poema: `Harmonizo com o fim de Refletir
+                Modelando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder do Espírito`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        139: {
+          nome: "Tormenta Solar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_4e5d702ca6884da1929b8ba7ea1a9281~mv2.png",
+          poema: `Pulso com o fim de Catalisar
+                Realizando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Visão`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        140: {
+          nome: "Sol Planetário Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_ab058e0f8e6747e3b57a78b2513dcb88~mv2.png",
+          poema: `Aperfeiçoo com o fim de Iluminar
+                Produzindo a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Elegância
+                Sou um kin polar
+                Estendo o espectro galáctico Amarelo`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        141: {
+          nome: "Dragão Espectral Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6da3758f407c4ae08f78af994bc4d16a~mv2.png",
+          poema: `Dissolvo com o fim de Nutrir
+                Libertando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        142: {
+          nome: "Vento Cristal Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_87a869ae38074d74948c4980a4bda758~mv2.png",
+          poema: `Dedico-me com o fim de Comunicar
+                Universalizando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        143: {
+          nome: "Noite Cósmica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3742c01b35c140039f5008a0fe712358~mv2.png",
+          poema: `Persevero com o fim de Sonhar
+                Transcendendo a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Realização`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        144: {
+          nome: "Semente Magnética Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3d8a0724dd1b45059ac63092f199c42c~mv2.png",
+          poema: `Unifico com o fim de Focalizar
+                Atraindo a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        145: {
+          nome: "Serpente Lunar Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_ced3018809454185bd26ad1cf4ab5a67~mv2.png",
+          poema: `Polarizo com o fim de Sobreviver
+                Estabilizando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Navegação`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        146: {
+          nome: "Enlaçador de Mundos Elétrico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_5da94607cebe486cb42a0014cd3a09f7~mv2.png",
+          poema: `Ativo com o fim de Igualar
+                Vinculando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder do Coração
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        147: {
+          nome: "Mão Autoexistente Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_45c317d6e5fb4241be52bb4eccfafb1d~mv2.png",
+          poema: `Defino com o fim de Conhecer
+                Medindo a Cura
+                Selo o Armazém da Realização
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Abundância
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        148: {
+          nome: "Estrela Harmônica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_42abbc711f6248db9c4e09d501d97b3c~mv2.png",
+          poema: `Potencializo com o fim de Embelezar
+                Comandando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Inteligência
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        149: {
+          nome: "Lua Rítmica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6b8b525514fe428aad2dcfad34ceb3cc~mv2.png",
+          poema: `Organizo com o fim de Purificar
+                Equilibrando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        150: {
+          nome: "Cahorro Ressonante Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e81123f6d8b94586b4e57a200d0b6def~mv2.png",
+          poema: `Canalizo com o fim de Amar
+                Inspirando a Lealdade
+                Selo o Processo do Coração
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder do Espírito
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        151: {
+          nome: "Macaco Galáctico Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_06cace5db79746e4acef2b0d1bfd49b7~mv2.png",
+          poema: `Harmonizo com o fim de Brincar
+                Modelando a Ilusão
+                Selo o Processo da Magia
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Visão
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        152: {
+          nome: "Humano Solar Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_8b74d9b4c73a438bb7c4137ee3005de6~mv2.png",
+          poema: `Pulso com o fim de Influenciar
+                Realizando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Elegância
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        153: {
+          nome: "Caminhante do Céu Planetário Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e1b2e00a68d74d6bb22427318e1a5762~mv2.png",
+          poema: `Aperfeiçoo com o fim de Explorar
+                Produzindo a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder  do Nascimento
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        154: {
+          nome: "Mago Espectral Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_58ad80fec7774977945401f5025d7b3e~mv2.png",
+          poema: `Dissolvo com o fim de Encantar
+                Libertando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        155: {
+          nome: "Águia Cristal Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d2be9e623264439385e5b46b1a7f8b83~mv2.png",
+          poema: `Dedico-me com o fim de Criar
+                Universalizando a Mente
+                Selo a Saída da Visão
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Realização
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        156: {
+          nome: "Guerreiro Cósmico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_f4ae7a3854b048739840f21792c95a80~mv2.png",
+          poema: `Persevero com o fim de Questionar
+                Transcendendo a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        157: {
+          nome: "Terra Magnética Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e38927c0aa2e472ba274acd646ef80ca~mv2.png",
+          poema: `Unifico com o fim de Evoluir
+                Atraindo a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        158: {
+          nome: "Espelho Lunar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_412d36d67bed4caba0cd42802b7cfc94~mv2.png",
+          poema: `Polarizo com o fim de Refletir
+                Estabilizando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder do Coração`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        159: {
+          nome: "Tormenta Elétrica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_fddcf142ee894bfeae563f6a65594cd4~mv2.png",
+          poema: `Ativo com o fim de Catalisar
+                Vinculando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Abundância`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        160: {
+          nome: "Sol Autoexistente Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e30cb25fb14e4635b19bdd2c8dec23ed~mv2.png",
+          poema: `Defino com o fim de Iluminar
+                Medindo a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Inteligência
+                Sou um kin polar
+                Converto o espectro galáctico Amarelo`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        161: {
+          nome: "Dragão Harmônico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_b621e7bb31e84da391e70ad586f4bcae~mv2.png",
+          poema: `Potencializo com o fim de Nutrir
+                Comandando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Água Universal`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        162: {
+          nome: "Vento Rítmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a31a15d0a3244b7ca83e29490c642f24~mv2.png",
+          poema: `Organizo com o fim de Comunicar
+                Equilibrando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        163: {
+          nome: "Noite Ressonante Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_74c8adba063442b49a51ca74e8c53aaa~mv2.png",
+          poema: `Canalizo com o fim de Sonhar
+                Inspirando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Visão`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        164: {
+          nome: "Semente Galáctica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7c5a62793e5447c9964f9f452af67dd9~mv2.png",
+          poema: `Harmonizo com o fim de Focalizar
+                Modelando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Elegância`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        165: {
+          nome: "Serpente Solar Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_4d1958af799b4829b635942fad4912ae~mv2.png",
+          poema: `Pulso com o fim de Sobreviver
+                Realizando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder do Nascimento
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        166: {
+          nome: "Enlaçador de Mundos Planetário Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_b71352c9ea59448fbe2e1736e0cd7e3c~mv2.png",
+          poema: `Aperfeiçoo com o fim de Igualar
+                Produzindo a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        167: {
+          nome: "Mão Espectral Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_29a81136e9d041058e301fa63292d776~mv2.png",
+          poema: `Dissolvo com o fim de Conhecer
+                Libertando a Cura
+                Selo o Armazém da Realização
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        168: {
+          nome: "Estrela Cristal Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c3d19eebc26141e8b0fa742837a217da~mv2.png",
+          poema: `Dedico-me com o fim de Embelezar
+                Universalizando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder do Fogo Universal
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        169: {
+          nome: "Lua Cósmica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_bfe62d9b1cf44579a56e1c5c1443af27~mv2.png",
+          poema: `Persevero com o fim de Purificar
+                Transcendendo o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do Espaço`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        170: {
+          nome: "Cahorro Magnético Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_39167a816471484fbeb6060491b92110~mv2.png",
+          poema: `Unifico com o fim de Amar
+                Atraindo a Lealdade
+                Selo o Processo do Coração
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        171: {
+          nome: "Macaco Lunar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_16e43402c6074761bb078e44275460dc~mv2.png",
+          poema: `Polarizo com o fim de Brincar
+                Estabilizando a Ilusão
+                Selo o Processo da Magia
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Abundância`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        172: {
+          nome: "Humano Elétrico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_287d6375f72949dab339e98ef9313c85~mv2.png",
+          poema: `Ativo com o fim de Influenciar
+                Vinculando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Inteligência`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        173: {
+          nome: "Caminhante do Céu Autoexistente Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_96e5da5a7a7b41e6bcec87db431b68a3~mv2.png",
+          poema: `Defino com o fim de Explorar
+                Medindo a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Água Universal
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        174: {
+          nome: "Mago Harmônico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_f250be22d0994870b79bfabbde26b1af~mv2.png",
+          poema: `Potencializo com o fim de Encantar
+                Comandando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder do Espírito`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        175: {
+          nome: "Águia Rítmica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_2e90aa6b31db489b9ddf23a7fc9d9c44~mv2.png",
+          poema: `Organizo com o fim de Criar
+                Equilibrando a Mente
+                Selo a Saída da Visão
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        176: {
+          nome: "Guerreiro Ressonante Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_66372377bf364c69ac464be8d7b519df~mv2.png",
+          poema: `Canalizo com o fim de Questionar
+                Inspirando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Elegância
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        177: {
+          nome: "Terra Galáctica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_9bf99cf07b6940bea1ff45b00da3978d~mv2.png",
+          poema: `Harmonizo com o fim de Evoluir
+                Modelando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder do Nascimento`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        178: {
+          nome: "Espelho Solar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_446380f5945d4e5a99bf0325db750398~mv2.png",
+          poema: `Pulso com o fim de Refletir
+                Realizando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        179: {
+          nome: "Tormenta Planetária Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_297f4084b6954c428972aced699ef23c~mv2.png",
+          poema: `Aperfeiçoocom o fim de Catalisar
+                Produzindo a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Realização`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        180: {
+          nome: "Sol Espectral Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_9883f44e2ee04440a7aaf0a26bd46352~mv2.png",
+          poema: `Dissolvo com o fim de Iluminar
+                Libertando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um kin polar
+                Transporto o espectro galáctico Amarelo`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        181: {
+          nome: "Dragão Cristal Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d6f88dc119ab46c8a0fc9c044887b3ad~mv2.png",
+          poema: `Dedico-me com o fim de Nutrir
+                Universalizando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder do Espaço`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        182: {
+          nome: "Vento Cósmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_2aa43d7409ee47e1a44489f0d0598bdb~mv2.png",
+          poema: `Persevero com o fim de Comunicar
+                Transcendendo o Alento
+                Selo a Entrada do Espírito
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Morte`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        183: {
+          nome: "Noite Magnética Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_88ab49e38a824104b4090a1ecf359e07~mv2.png",
+          poema: `Unifico com o fim de Sonhar
+                Atraindo a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        184: {
+          nome: "Semente Lunar Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c1d9f697df5d415cb4f28aca5232be15~mv2.png",
+          poema: `Polarizo com o fim de Focalizar
+                Estabilizando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Inteligência
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        185: {
+          nome: "Serpente Elétrica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_19685dfe39e146c08e3451af57b13010~mv2.png",
+          poema: `Ativo com o fim de Sobreviver
+                Vinculando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Água Universal
+                Sou um kin polar
+                Estabeleço o espectro galáctico Vermelho`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        186: {
+          nome: "Enlaçador de Mundos Autoexistente Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_82a4b6b30e30484fb43d7da82bd7baba~mv2.png",
+          poema: `Defino com o fim de Igualar
+                Medindo a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder do Espírito`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        187: {
+          nome: "Mão Harmônica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3dc482ec93b54be7bbe089064215687b~mv2.png",
+          poema: `Potencializo com o fim de Conhecer
+                Comandando a Cura
+                Selo o Armazém da Realização
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Visão`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        188: {
+          nome: "Estrela Rítmica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a649fd5c4bac45c5be500103e6ca2f12~mv2.png",
+          poema: `Organizo com o fim de Embelezar
+                Equilibrando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        189: {
+          nome: "Lua Ressonante Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6c0b546c22bf420f9a883f8cb1286d00~mv2.png",
+          poema: `Canalizo com o fim de Purificar
+                Inspirando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder do Nascimento
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        190: {
+          nome: "Cahorro Galáctico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_1f27f8af0481426c9a8183eb44c8038e~mv2.png",
+          poema: `Harmonizo com o fim de Amar
+                Modelando a Lealdade
+                Selo o Processo do Coração
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        191: {
+          nome: "Macaco Solar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_10d85d0953714d4693251e7378a3e746~mv2.png",
+          poema: `Pulso com o fim de Brincar
+                Realizando a Ilusão
+                Selo o Processo da Magia
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Realização`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        192: {
+          nome: "Humano Planetário Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_2ab80bfcf6b44591825321bebb81a4b1~mv2.png",
+          poema: `Aperfeiçoo com o fim de Influenciar
+                Produzindo a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder do Fogo Universal
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        193: {
+          nome: "Caminhante do Céu Espectral Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_73725684930b457c8b798990189d746b~mv2.png",
+          poema: `Dissolvo com o fim de Explorar
+                Libertando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        194: {
+          nome: "Mago Cristal Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d26c4d6c92504522915bc3422df90dd2~mv2.png",
+          poema: `Dedico-me com o fim de Encantar
+                Universalizando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Morte`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        195: {
+          nome: "Águia Cósmica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_291c4c8824e041608c30807f749b1394~mv2.png",
+          poema: `Persevero com o fim de Criar
+                Transcendendo a Mente
+                Selo a Saída da Visão
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Autogeração`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        196: {
+          nome: "Guerreiro Magnético Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_eaad00f1be07448e998fe3ea6625d4d5~mv2.png",
+          poema: `Unifico com o fim de Questionar
+                Atraindo a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        197: {
+          nome: "Terra Lunar Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_36e50007971743b59617912dcfe50888~mv2.png",
+          poema: `Polarizo com o fim de Evoluir
+                Estabilizando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Água Universal
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        198: {
+          nome: "Espelho Elétrico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_421decd30ec9442f91fc20cef1322fa0~mv2.png",
+          poema: `Ativo com o fim de Refletir
+                Vinculando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder do Espírito`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        199: {
+          nome: "Tormenta Autoexistente Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_9439ca835d794cdbb7121b24d806c21e~mv2.png",
+          poema: `Defino com o fim de Catalisar
+                Medindo a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Visão`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        200: {
+          nome: "Sol Harmônico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_8165d618a25a492081de194e20cc6dc7~mv2.png",
+          poema: `Potencializo com o fim de Iluminar
+                Comandando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Elegância`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        201: {
+          nome: "Dragão Rítmico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_85674093be9b4de88b3a6a351006568c~mv2.png",
+          poema: `Organizo com o fim de Nutrir
+                Equilibrando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        202: {
+          nome: "Vento Ressonante Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_f61baa28a13b4cb7a28142f5a13fa10c~mv2.png",
+          poema: `Canalizo com o fim de Comunicar
+                Inspirando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        203: {
+          nome: "Noite Galáctica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_082b3513976149a0a1eff739fbb3dd2c~mv2.png",
+          poema: `Harmonizo com o fim de Sonhar
+                Modelando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Realização
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        204: {
+          nome: "Semente Solar Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_67c2bcf21ed246768c08363d6b584d7f~mv2.png",
+          poema: `Pulso com o fim de Focalizar
+                Realizando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder do Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        205: {
+          nome: "Serpente Planetária Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7d13ef7a0d1e423fb848a3799040f4e4~mv2.png",
+          poema: `Aperfeiçoo com o fim de Sobreviver
+                Produzindo o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder do Espaço
+                Sou um kin polar
+                Estendo o espectro galáctico Vermelho`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        206: {
+          nome: "Enlaçador de Mundos Espectral Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d7c322a8e54941219a6c018c70295234~mv2.png",
+          poema: `Dissolvo com o fim de Igualar
+                Libertando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        207: {
+          nome: "Mão Cristal Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_443a54be10e14eb19736007aebe1688f~mv2.png",
+          poema: `Dedico-me com o fim de Conhecer
+                Universalizando a Cura
+                Selo o Armazém da Realização
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Autogeração`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        208: {
+          nome: "Estrela Cósmica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_79a9bd62eff54337b3391bb7f72b3383~mv2.png",
+          poema: `Persevero com o fim de Embelezar
+                Transcendendo a Arte
+                Selo o Armazém da Elegância
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do Livre-Arbítrio`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        209: {
+          nome: "Lua Magnética Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6e059d4d34014555add15b8efbd7d5fa~mv2.png",
+          poema: `Unifico com o fim de Purificar
+                Atraindo o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        210: {
+          nome: "Cahorro Lunar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e4b15318ad374c668aacd30afc75edbe~mv2.png",
+          poema: `Polarizo com o fim de Amar
+                Estabilizando a Lealdade
+                Selo o Processo do Coração
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder do Espírito
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        211: {
+          nome: "Macaco Elétrico Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_dd7237d204934b72912b96e75265bdc6~mv2.png",
+          poema: `Ativo com o fim de Brincar
+                Vinculando a Ilusão
+                Selo o Processo da Magia
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Visão
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        212: {
+          nome: "Humano Autoexistente Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_94d4b93db870458c998bfbcdccf95651~mv2.png",
+          poema: `Defino com o fim de Influenciar
+                Medindo a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Elegância`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        213: {
+          nome: "Caminhante do Céu Harmônico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_8c4ea3ceb77143c8b0e7270253be82dd~mv2.png",
+          poema: `Potencializo com o fim de Explorar
+                Comandando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder do Nascimento`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        214: {
+          nome: "Mago Rítmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_ff4654ea501046778c36844969340144~mv2.png",
+          poema: `Organizo com o fim de Encantar
+                Equilibrando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        215: {
+          nome: "Águia Ressonante Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_db618f24a89e4c0da80649aadcbe2234~mv2.png",
+          poema: `Canalizo com o fim de Criar
+                Inspirando a Mente
+                Selo a Saída da Visão
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Realização`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        216: {
+          nome: "Guerreiro Galáctico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_08b31517545f4b0693079ce8833b5c50~mv2.png",
+          poema: `Harmonizo com o fim de Questionar
+                Modelando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        217: {
+          nome: "Terra Solar Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_4671d60dffe34aaf9a99894a253b0fd9~mv2.png",
+          poema: `Pulso com o fim de Evoluir
+                Realizando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder do Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        218: {
+          nome: "Espelho Planetário Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a5306366d9284ca7a2d5f72258a3c09f~mv2.png",
+          poema: `Aperfeiçoo com o fim de Refletir
+                Produzindo a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Morte
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        219: {
+          nome: "Tormenta Espectral Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_49c72784eb614c6d95ffee3fe8541053~mv2.png",
+          poema: `Dissolvo com o fim de Catalisar
+                Libertando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        220: {
+          nome: "Sol Cristal Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_eb383d6da36d4d92a3f55a32ffc16345~mv2.png",
+          poema: `Dedico-me com o fim de Iluminar
+                Universalizando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder do Livre-Arbítrio`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+
+        221: {
+          nome: "Dragão Cósmico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_45be688dc8984602bf0cf4f5dc1b762b~mv2.png",
+          poema: `Persevero com o fim de Nutrir
+                Transcendendo o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Força-Vital`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        222: {
+          nome: "Vento Magnético Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_ed033315b88446dfb6b4daaeae82a53d~mv2.png",
+          poema: `Unifico com o fim de Comunicar
+                Atraindo o Alento
+                Selo a Entrada do Espírito
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        223: {
+          nome: "Noite Lunar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_470a8e0b7dc94e37a1340ace8af623ff~mv2.png",
+          poema: `Polarizo com o fim de Sonhar
+                Estabilizando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Visão`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        224: {
+          nome: "Semente Elétrica Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_af8caf48355f49cf904cab1d41a03e79~mv2.png",
+          poema: `Ativo com o fim de Focalizar
+                Vinculando a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Elegância`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        225: {
+          nome: "Serpente Autoexistente Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_a068aa5720b845de9cb0800fb818dbaa~mv2.png",
+          poema: `Defino com o fim de Sobreviver
+                Medindo o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder do Nascimento
+                Sou um kin polar
+                Converto o espectro galáctico Vermelho`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        226: {
+          nome: "Enlaçador de Mundos Harmônico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_34fc7357548f4e79b7eb2219876080d1~mv2.png",
+          poema: `Potencializo com o fim de Igualar
+                Comandando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        227: {
+          nome: "Mão Rítmica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_67174ecaa9d045a1b7eee61d1457def0~mv2.png",
+          poema: `Organizo com o fim de Conhecer
+                Equilibrando a Cura
+                Selo o Armazém da Realização
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        228: {
+          nome: "Estrela Ressonante Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7bd3724146d1468aa2f71019ef19bde3~mv2.png",
+          poema: `Canalizo com o fim de Embelezar
+                Inspirando a Arte
+                Selo o Armazém da Elegância
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder do Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        229: {
+          nome: "Lua Galáctica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6412f11cac934869a09e6b0f2837b39e~mv2.png",
+          poema: `Harmonizo com o fim de Purificar
+                Modelando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder do Espaço`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        230: {
+          nome: "Cahorro Solar Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_c3c841e68ff146ffb652292d1fd24d6e~mv2.png",
+          poema: `Pulso com o fim de Amar
+                Realizando a Lealdade
+                Selo o Processo do Coração
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Morte`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        231: {
+          nome: "Macaco Planetário Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7464e8a6ac2b419f9f0420e4a4954c80~mv2.png",
+          poema: `Aperfeiçoo com o fim de Brincar
+                Produzindo a Ilusão
+                Selo o Processo da Magia
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Autogeração`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        232: {
+          nome: "Humano Espectral Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_dec43b4fd2854f6da61b4cf6def2f53d~mv2.png",
+          poema: `Dissolvo com o fim de Influenciar
+                Libertando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        233: {
+          nome: "Caminhante do Céu Cristal Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_bd57e9df56874842ba334dccd5cd391a~mv2.png",
+          poema: `Dedico-me com o fim de Explorar
+                Universalizando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Força-Vital`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        234: {
+          nome: "Mago Cósmico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e37bd6a8c18f4c929d9c78a8c87e85a5~mv2.png",
+          poema: `Persevero com o fim de Encantar
+                Transcendendo a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do Infinito`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        235: {
+          nome: "Águia Magnética Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_211a22d79fc54835a320867dff9f13a1~mv2.png",
+          poema: `Unifico com o fim de Criar
+                Atraindo a Mente
+                Selo a Saída da Visão
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        236: {
+          nome: "Guerreiro Lunar Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d08ad32eb6954fb5a6bd1246b76c2109~mv2.png",
+          poema: `Polarizo com o fim de Questionar
+                Estabilizando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder da Elegância`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        237: {
+          nome: "Terra Elétrica Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_91246b27aeff4034b9726aea841848b7~mv2.png",
+          poema: `Ativo com o fim de Evoluir
+                Vinculando a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder do Nascimento`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        238: {
+          nome: "Espelho Autoexistente Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_1c7a24738b854d83b84949af2d2f0627~mv2.png",
+          poema: `Defino com o fim de Refletir
+                Medindo a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Intemporalidade`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        239: {
+          nome: "Tormenta Harmônica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_172487a59cc24772a1949bc3701dd98c~mv2.png",
+          poema: `Potencializo com o fim de Catalisar
+                Comandando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder da Realização
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        240: {
+          nome: "Sol Rítmico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_5908013da9104292aa15b16a1cb975e0~mv2.png",
+          poema: `Organizo com o fim de Iluminar
+                Equilibrando a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+        241: {
+          nome: "Dragão Ressonante Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_8f39b4d5a75c4bb7907d8ae438994e5e~mv2.png",
+          poema: `Canalizo com o fim de Nutrir
+                Inspirando o Ser
+                Selo a Entrada do Nascimento
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder  do Espaço
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/01-drag%C3%A3o-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/1-a-forca-primordial",
+        },
+        242: {
+          nome: "Vento Galáctico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3f9eeb7790834c668dccbb264f948cdb~mv2.png",
+          poema: `Harmonizo com o fim de Comunicar
+                Modelando o Alento
+                Selo a Entrada do Espírito
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Morte`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/02-vento-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/2-a-suma-sacerdotisa",
+        },
+        243: {
+          nome: "Noite Solar Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_d63e1e707de3436fb39e36300825cf9e~mv2.png",
+          poema: `Pulso com o fim de Sonhar
+                Realizando a Intuição
+                Selo a Entrada da Abundância
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder da Autogeração`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/03-noite-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/3-o-sonhador",
+        },
+        244: {
+          nome: "Semente Planetária Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_bc458c725b8246f697c416733bb83003~mv2.png",
+          poema: `Aperfeiçoo com o fim de Focalizar
+                Produzindo a Percepção
+                Selo a Entrada do Florescimento
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder do Livre-Arbítrio`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/04-semente-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/4-o-inocente",
+        },
+        245: {
+          nome: "Serpente Espectral Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_fcc63b72fed7463f9d2b311081054345~mv2.png",
+          poema: `Dissolvo com o fim de Sobreviver
+                Libertando o Instinto
+                Selo o Armazém da Força-Vital
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado
+                Sou um kin polar
+                Transporto o espectro galáctico Vermelho`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/05-serpente-vermelha",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/5-o-iniciado-serpente",
+        },
+        246: {
+          nome: "Enlaçador de Mundos Cristal Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_3138f723867a4fc0b0ea2986843479f1~mv2.png",
+          poema: `Dedico-me com o fim de Igualar
+                Universalizando a Oportunidade
+                Selo o Armazém da Morte
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder do Espírito`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo:
+            "https://www.viajantesdotempo.com/06-enla%C3%A7ador-de-mundos-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/6-o-hierofante",
+        },
+        247: {
+          nome: "Mão Cósmica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_50c0bc230c6c499e898e894c1f01320c~mv2.png",
+          poema: `Persevero com o fim de Conhecer
+                Transcendendo a Cura
+                Selo o Armazém da Realização
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/07-m%C3%A3o-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/7-o-avatar",
+        },
+        248: {
+          nome: "Estrela Magnética Amarela",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6927ad7ba7d4440db629b102b6c17924~mv2.png",
+          poema: `Unifico com o fim de Embelezar
+                Atraindo a Arte
+                Selo o Armazém da Elegância
+                Com o tom Magnético do Propósito
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/01-tom-magn%C3%A9tico",
+          urlSelo: "https://www.viajantesdotempo.com/08-estrela-amarela",
+          urlArquetipo: "https://www.viajantesdotempo.com/8-o-artista",
+        },
+        249: {
+          nome: "Lua Lunar Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6945e23f6b47435eb49d3dab98cbe937~mv2.png",
+          poema: `Polarizo com o fim de Purificar
+                Estabilizando o Fluxo
+                Selo o Processo da Água Universal
+                Com o tom Lunar do Desafio
+                Eu sou guiado pelo poder do Nascimento`,
+          urlTom: "https://www.viajantesdotempo.com/02-tom-lunar",
+          urlSelo: "https://www.viajantesdotempo.com/09-lua-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/9-a-curandeira",
+        },
+        250: {
+          nome: "Cachorro Elétrico Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_2f321bdd6f0c45d08292895581e180b4~mv2.png",
+          poema: `Ativo com o fim de Amar
+                Vinculando a Lealdade
+                Selo o Processo do Coração
+                Com o tom Elétrico do Serviço
+                Eu sou guiado pelo poder da Intemporalidade
+                Sou um kin polar
+                Estabeleço o espectro galáctico Branco`,
+          urlTom: "https://www.viajantesdotempo.com/03-tom-el%C3%A9trico",
+          urlSelo: "https://www.viajantesdotempo.com/10-cachorro-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/10-o-compassivo",
+        },
+        251: {
+          nome: "Macaco Autoexistente Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_fe7bf5b6af4d475c85ae6681c2539192~mv2.png",
+          poema: `Defino com o fim de Brincar
+                Medindo a Ilusão
+                Selo o Processo da Magia
+                Com o tom Autoexistente da Forma
+                Eu sou guiado pelo poder da Realização`,
+          urlTom: "https://www.viajantesdotempo.com/04-tom-autoexistente",
+          urlSelo: "https://www.viajantesdotempo.com/11-macaco-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/11-o-ilusionista",
+        },
+        252: {
+          nome: "Humano Harmônico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_6e4671d0a0c743e58c283d2cef81e04e~mv2.png",
+          poema: `Potencializo com o fim de Influenciar
+                Comandando a Sabedoria
+                Selo o Processo do Livre-arbítrio
+                Com o tom Harmônico da Radiação
+                Eu sou guiado pelo poder do Fogo Universal`,
+          urlTom: "https://www.viajantesdotempo.com/05-tom-harm%C3%B4nico",
+          urlSelo: "https://www.viajantesdotempo.com/12-humano-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/12-o-sabio",
+        },
+        253: {
+          nome: "Caminhante do Céu Rítmico Vermelho",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7d1e42c31c64472c8eaf36afa337a5f5~mv2.png",
+          poema: `Organizo com o fim de Explorar
+                Equilibrando a Vigilância
+                Selo a Saída do Espaço
+                Com o tom Rítmico da Igualdade
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/06-tom-r%C3%ADtmico",
+          urlSelo:
+            "https://www.viajantesdotempo.com/13-caminhante-do-c%C3%A9u-vermelho",
+          urlArquetipo: "https://www.viajantesdotempo.com/13-o-profeta",
+        },
+        254: {
+          nome: "Mago Ressonante Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_e2b89d4927b3445abd434f57d5d06a1b~mv2.png",
+          poema: `Canalizo com o fim de Encantar
+                Inspirando a Receptividade
+                Selo a Saída da Intemporalidade
+                Com o tom Ressonante da Sintonização
+                Eu sou guiado pelo poder da Morte`,
+          urlTom: "https://www.viajantesdotempo.com/07-tom-ressonante",
+          urlSelo: "https://www.viajantesdotempo.com/14-mago-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/14-o-mago",
+        },
+        255: {
+          nome: "Águia Galáctica Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_dd937e14a8ef45d5ba8071a734731764~mv2.png",
+          poema: `Harmonizo com o fim de Criar
+                Modelando a Mente
+                Selo a Saída da Visão
+                Com o tom Galáctico da Integridade
+                Eu sou guiado pelo poder da Autogeração`,
+          urlTom: "https://www.viajantesdotempo.com/08-tom-gal%C3%A1ctico",
+          urlSelo: "https://www.viajantesdotempo.com/15-%C3%A1guia-azul",
+          urlArquetipo: "https://www.viajantesdotempo.com/15-o-vidente",
+        },
+        256: {
+          nome: "Guerreiro Solar Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_2fd065931bb84441b3a03985acbe4147~mv2.png",
+          poema: `Pulso com o fim de Questionar
+                Realizando a Intrepidez
+                Selo a Saída da Inteligência
+                Com o tom Solar da Intenção
+                Eu sou guiado pelo poder do Livre-Arbítrio`,
+          urlTom: "https://www.viajantesdotempo.com/09-tom-solar",
+          urlSelo: "https://www.viajantesdotempo.com/16-guerreiro-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/16-o-descobridor",
+        },
+        257: {
+          nome: "Terra Planetária Vermelha",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_492cd8fed04d4342a6ec15e8345984ee~mv2.png",
+          poema: `Aperfeiçoo com o fim de Evoluir
+                Produzindo a Sincronicidade
+                Selo a Matriz da Navegação
+                Com o tom Planetário da Manifestação
+                Eu sou guiado pelo poder da Força-Vital`,
+          urlTom: "https://www.viajantesdotempo.com/10-tom-planet%C3%A1rio",
+          urlSelo: "https://www.viajantesdotempo.com/17-terra-vermelha",
+          urlArquetipo: "https://www.viajantesdotempo.com/17-o-navegador",
+        },
+        258: {
+          nome: "Espelho Espectral Branco",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_91d6007e53d14eaba7654799a66fa2cf~mv2.png",
+          poema: `Dissolvo com o fim de Refletir
+                Libertando a Ordem
+                Selo a Matriz do Infinito
+                Com o tom Espectral da Liberação
+                Eu sou guiado pelo meu próprio poder duplicado`,
+          urlTom: "https://www.viajantesdotempo.com/11-tom-espectral",
+          urlSelo: "https://www.viajantesdotempo.com/18-espelho-branco",
+          urlArquetipo: "https://www.viajantesdotempo.com/18-o-yogue-yoguine",
+        },
+        259: {
+          nome: "Tormenta Cristal Azul",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_f9b8a1f4aa95489f8063bb7899659aff~mv2.png",
+          poema: `Dedico-me com o fim de Catalisar
+                Universalizando a Energia
+                Selo a Matriz da Autogeração
+                Com o tom Cristal da Cooperação
+                Eu sou guiado pelo poder da Magia`,
+          urlTom: "https://www.viajantesdotempo.com/12-tom-cristal",
+          urlSelo: "https://www.viajantesdotempo.com/19-tormenta-azul",
+          urlArquetipo:
+            "https://www.viajantesdotempo.com/19-o-transformador-de-mundos",
+        },
+        260: {
+          nome: "Sol Cósmico Amarelo",
+          imagem:
+            "https://static.wixstatic.com/media/5d56c4_7c67ee0aa98c499a83a8ebf370ebe657~mv2.png",
+          poema: `Persevero com o fim de Iluminar
+                Transcendendo a Vida
+                Selo a Matriz do Fogo Universal
+                Com o tom Cósmico da Presença
+                Eu sou guiado pelo poder do Florescimento
+                Sou um portal de ativação galáctica entra por mim`,
+          urlTom: "https://www.viajantesdotempo.com/13-tom-c%C3%B3smico",
+          urlSelo: "https://www.viajantesdotempo.com/20-sol-amarelo",
+          urlArquetipo: "https://www.viajantesdotempo.com/20-o-iluminado",
+        },
+      };
+
+      window.onload = function () {
+        const hoje = new Date();
+        const dia = hoje.getDate();
+        const mes = hoje.getMonth() + 1;
+        const ano = hoje.getFullYear();
+
+        try {
+          const kinNumber = calcularKin(dia, mes, ano);
+          const kinInfo = kins[kinNumber];
+
+          if (kinInfo) {
+            document.getElementById("result").innerHTML = `
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Kin ${kinNumber}</h2>
+                        <img src="${kinInfo.imagem}" alt="${kinInfo.nome}" class="w-32 h-32 mx-auto mb-4 rounded-lg shadow-md object-contain bg-gray-50 p-2">
+                        <h3 class="text-xl font-bold text-black">${kinInfo.nome}</h3>
+                        <h4 class="text-lg text-black mt-2 font-bold">Mantra Kin</h4>
+                        <p class="text-sm text-gray-700 mt-2 mb-6 whitespace-pre-line">${kinInfo.poema}</p>
+                        
+                    `;
+          } else {
+            document.getElementById("result").innerHTML = `
+                        <h2 class="text-2xl font-bold text-gray-800">Kin não encontrado</h2>
+                    `;
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+      };
+
+      function calcularKin(dia, mes, ano) {
+        const tabelaAnos = {
+          1804: 112,
+          1805: 217,
+          1806: 62,
+          1807: 167,
+          1808: 12,
+          1809: 117,
+          1810: 222,
+          1811: 67,
+          1812: 172,
+          1813: 17,
+          1814: 122,
+          1815: 227,
+          1816: 72,
+          1817: 177,
+          1818: 22,
+          1819: 127,
+          1820: 232,
+          1821: 77,
+          1822: 182,
+          1823: 27,
+          1824: 132,
+          1825: 237,
+          1826: 82,
+          1827: 187,
+          1828: 32,
+          1829: 137,
+          1830: 242,
+          1831: 87,
+          1832: 192,
+          1833: 37,
+          1834: 142,
+          1835: 247,
+          1836: 92,
+          1837: 197,
+          1838: 42,
+          1839: 147,
+          1840: 252,
+          1841: 97,
+          1842: 202,
+          1843: 47,
+          1844: 152,
+          1845: 257,
+          1846: 102,
+          1847: 207,
+          1848: 52,
+          1849: 157,
+          1850: 2,
+          1851: 107,
+          1852: 212,
+          1853: 57,
+          1854: 162,
+          1855: 7,
+          1856: 112,
+          1857: 217,
+          1858: 62,
+          1859: 167,
+          1860: 12,
+          1861: 117,
+          1862: 222,
+          1863: 67,
+          1864: 172,
+          1865: 17,
+          1866: 122,
+          1867: 227,
+          1868: 72,
+          1869: 177,
+          1870: 22,
+          1871: 127,
+          1872: 232,
+          1873: 77,
+          1874: 182,
+          1875: 27,
+          1876: 132,
+          1877: 237,
+          1878: 82,
+          1879: 187,
+          1880: 32,
+          1881: 137,
+          1882: 242,
+          1883: 87,
+          1884: 192,
+          1885: 37,
+          1886: 142,
+          1887: 247,
+          1888: 92,
+          1889: 197,
+          1890: 42,
+          1891: 147,
+          1892: 252,
+          1893: 97,
+          1894: 202,
+          1895: 47,
+          1896: 152,
+          1897: 257,
+          1898: 102,
+          1899: 207,
+          1900: 52,
+          1901: 157,
+          1902: 2,
+          1903: 107,
+          1904: 212,
+          1905: 57,
+          1906: 162,
+          1907: 7,
+          1908: 112,
+          1909: 217,
+          1910: 62,
+          1911: 167,
+          1912: 12,
+          1913: 117,
+          1914: 222,
+          1915: 67,
+          1916: 172,
+          1917: 17,
+          1918: 122,
+          1919: 227,
+          1920: 72,
+          1921: 177,
+          1922: 22,
+          1923: 127,
+          1924: 232,
+          1925: 77,
+          1926: 182,
+          1927: 27,
+          1928: 132,
+          1929: 237,
+          1930: 82,
+          1931: 187,
+          1932: 32,
+          1933: 137,
+          1934: 242,
+          1935: 87,
+          1936: 192,
+          1937: 37,
+          1938: 142,
+          1939: 247,
+          1940: 92,
+          1941: 197,
+          1942: 42,
+          1943: 147,
+          1944: 252,
+          1945: 97,
+          1946: 202,
+          1947: 47,
+          1948: 152,
+          1949: 257,
+          1950: 102,
+          1951: 207,
+          1952: 52,
+          1953: 157,
+          1954: 2,
+          1955: 107,
+          1956: 212,
+          1957: 57,
+          1958: 162,
+          1959: 7,
+          1960: 112,
+          1961: 217,
+          1962: 62,
+          1963: 167,
+          1964: 12,
+          1965: 117,
+          1966: 222,
+          1967: 67,
+          1968: 172,
+          1969: 17,
+          1970: 122,
+          1971: 227,
+          1972: 72,
+          1973: 177,
+          1974: 22,
+          1975: 127,
+          1976: 232,
+          1977: 77,
+          1978: 182,
+          1979: 27,
+          1980: 132,
+          1981: 237,
+          1982: 82,
+          1983: 187,
+          1984: 32,
+          1985: 137,
+          1986: 242,
+          1987: 87,
+          1988: 192,
+          1989: 37,
+          1990: 142,
+          1991: 247,
+          1992: 92,
+          1993: 197,
+          1994: 42,
+          1995: 147,
+          1996: 252,
+          1997: 97,
+          1998: 202,
+          1999: 47,
+          2000: 152,
+          2001: 257,
+          2002: 102,
+          2003: 207,
+          2004: 52,
+          2005: 157,
+          2006: 2,
+          2007: 107,
+          2008: 212,
+          2009: 57,
+          2010: 162,
+          2011: 7,
+          2012: 112,
+          2013: 217,
+          2014: 62,
+          2015: 167,
+          2016: 12,
+          2017: 117,
+          2018: 222,
+          2019: 67,
+          2020: 172,
+          2021: 17,
+          2022: 122,
+          2023: 227,
+          2024: 72,
+          2025: 177,
+          2026: 22,
+          2027: 127,
+          2028: 232,
+          2029: 77,
+          2030: 182,
+          2031: 27,
+          2032: 132,
+          2033: 237,
+          2034: 82,
+          2035: 187,
+          2036: 32,
+          2037: 137,
+          2038: 242,
+          2039: 87,
+          2040: 192,
+          2041: 37,
+          2042: 142,
+          2043: 247,
+          2044: 92,
+          2045: 197,
+          2046: 42,
+          2047: 147,
+          2048: 252,
+          2049: 97,
+          2050: 202,
+          2051: 47,
+          2052: 152,
+          2053: 257,
+          2054: 102,
+          2055: 207,
+          2056: 52,
+          2057: 157,
+          2058: 2,
+          2059: 107,
+          2060: 212,
+          2061: 57,
+          2062: 162,
+          2063: 7,
+          2064: 112,
+          2065: 217,
+          2066: 62,
+          2067: 167,
+          2068: 12,
+          2069: 117,
+          2070: 222,
+          2071: 67,
+          2072: 172,
+          2073: 17,
+          2074: 122,
+          2075: 227,
+          2076: 72,
+          2077: 177,
+          2078: 22,
+          2079: 127,
+          2080: 232,
+          2081: 77,
+          2082: 182,
+          2083: 27,
+          2084: 132,
+          2085: 237,
+          2086: 82,
+          2087: 187,
+          2088: 32,
+          2089: 137,
+          2090: 242,
+          2091: 87,
+          2092: 192,
+          2093: 37,
+          2094: 142,
+          2095: 247,
+          2096: 92,
+          2097: 197,
+          2098: 42,
+          2099: 147,
+          2100: 252,
+          2101: 97,
+          2102: 202,
+          2103: 47,
+          2104: 152,
+          2105: 257,
+          2106: 102,
+          2107: 207,
+          2108: 52,
+          2109: 157,
+          2110: 2,
+          2111: 107,
+          2112: 212,
+          2113: 57,
+          2114: 162,
+          2115: 7,
+          2116: 112,
+          2117: 217,
+          2118: 62,
+          2119: 167,
+          2120: 12,
+          2121: 117,
+          2122: 222,
+          2123: 67,
+          2124: 172,
+          2125: 17,
+          2126: 122,
+          2127: 227,
+          2128: 72,
+          2129: 177,
+          2130: 22,
+          2131: 127,
+          2132: 232,
+          2133: 77,
+          2134: 182,
+          2135: 27,
+          2136: 132,
+          2137: 237,
+          2138: 82,
+          2139: 187,
+          2140: 32,
+          2141: 137,
+          2142: 242,
+          2143: 87,
+          2144: 192,
+          2145: 37,
+          2146: 142,
+          2147: 247,
+          2148: 92,
+          2149: 197,
+          2150: 42,
+        };
+
+        const tabelaMeses = [
+          0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334,
+        ];
+        const anoBase = 1804;
+
+        if (!tabelaAnos[ano]) {
+          throw new Error("Ano fora do intervalo permitido (1804-2100).");
+        }
+
+        const somaDiasAno = tabelaAnos[ano];
+        const somaDiasMes = tabelaMeses[mes];
+        const somaDiasDia = dia;
+
+        let kinNumber = (somaDiasAno + somaDiasMes + somaDiasDia) % 260;
+
+        if (kinNumber === 0) {
+          kinNumber = 260;
+        }
+
+        return kinNumber;
+      }
+    </script>
+  </body>
+</html>
